@@ -1,12 +1,17 @@
-CREATE DATABASE IF NOT EXISTS `SpotifyClone`;
+DROP DATABASE IF EXISTS SpotifyClone;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`plans` (
+CREATE DATABASE SpotifyClone;
+
+USE SpotifyClone;
+
+CREATE TABLE `SpotifyClone`.`plans` (
   `plan_id` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(125) NOT NULL,
   `price` DECIMAL(3,2) NOT NULL,
-  PRIMARY KEY (`plan_id`)) ENGINE = InnoDB;
+  PRIMARY KEY (`plan_id`)) 
+  ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`users` (
+CREATE TABLE `SpotifyClone`.`users` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(125) NOT NULL,
   `age` INT NOT NULL,
@@ -17,14 +22,16 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`users` (
     FOREIGN KEY (`purchased_plan`)
     REFERENCES `SpotifyClone`.`plans` (`plan_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION) ENGINE = InnoDB;
+    ON UPDATE NO ACTION) 
+    ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artists` (
+CREATE TABLE `SpotifyClone`.`artists` (
   `artist_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(125) NOT NULL,
-  PRIMARY KEY (`artist_id`)) ENGINE = InnoDB;
+  PRIMARY KEY (`artist_id`)) 
+  ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artists_followers` (
+CREATE TABLE `SpotifyClone`.`artists_followers` (
   `user` INT NOT NULL,
   `artist` INT NOT NULL,
   PRIMARY KEY (`user`, `artist`),
@@ -37,9 +44,10 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artists_followers` (
     FOREIGN KEY (`artist`)
     REFERENCES `SpotifyClone`.`artists` (`artist_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION) ENGINE = InnoDB;
+    ON UPDATE NO ACTION) 
+    ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albums` (
+CREATE TABLE `SpotifyClone`.`albums` (
   `album_id` INT NOT NULL AUTO_INCREMENT,
   `album_name` VARCHAR(125) NOT NULL,
   `artist` INT NOT NULL,
@@ -49,9 +57,10 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albums` (
     FOREIGN KEY (`artist`)
     REFERENCES `SpotifyClone`.`artists` (`artist_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION) ENGINE = InnoDB;
+    ON UPDATE NO ACTION) 
+    ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musics` (
+CREATE TABLE `SpotifyClone`.`musics` (
   `music_id` INT NOT NULL AUTO_INCREMENT,
   `music_name` VARCHAR(125) NOT NULL,
   `duration_seconds` INT NOT NULL,
@@ -67,9 +76,10 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musics` (
     FOREIGN KEY (`artist`)
     REFERENCES `SpotifyClone`.`artists` (`artist_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION) ENGINE = InnoDB;
+    ON UPDATE NO ACTION) 
+    ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`listening_history` (
+CREATE TABLE `SpotifyClone`.`listening_history` (
   `user` INT NOT NULL,
   `music` INT NOT NULL,
   `date_time` DATETIME NOT NULL,
@@ -83,7 +93,8 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`listening_history` (
     FOREIGN KEY (`music`)
     REFERENCES `SpotifyClone`.`musics` (`music_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION) ENGINE = InnoDB;
+    ON UPDATE NO ACTION) 
+    ENGINE = InnoDB;
 
 INSERT INTO SpotifyClone.plans (`type`, `price`)
   VALUES
