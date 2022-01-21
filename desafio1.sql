@@ -79,17 +79,17 @@ CREATE TABLE `SpotifyClone`.`musics` (
     ON UPDATE NO ACTION) 
     ENGINE = InnoDB;
 
-CREATE TABLE `SpotifyClone`.`listening_history` (
+CREATE TABLE `SpotifyClone`.`history` (
   `user` INT NOT NULL,
   `music` INT NOT NULL,
   `date_time` DATETIME NOT NULL,
   PRIMARY KEY (`user`, `music`),
-  CONSTRAINT `fk_listening_history_users`
+  CONSTRAINT `fk_history_users`
     FOREIGN KEY (`user`)
     REFERENCES `SpotifyClone`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_listening_history_musics`
+  CONSTRAINT `fk_history_musics`
     FOREIGN KEY (`music`)
     REFERENCES `SpotifyClone`.`musics` (`music_id`)
     ON DELETE NO ACTION
@@ -206,7 +206,7 @@ INSERT INTO SpotifyClone.musics (music_name, duration_seconds, artist, album)
       ('Baby', 136, 6, 10),
       ('You Make Me Feel So..', 83, 6, 10);
 
-INSERT INTO SpotifyClone.listening_history (`user`, date_time, music)
+INSERT INTO SpotifyClone.history (`user`, date_time, music)
 	VALUES
 		(1, '2020-02-28 10:45:55', 36),
 		(1, '2020-05-02 05:30:35', 25),
