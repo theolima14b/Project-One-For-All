@@ -5,4 +5,4 @@ SELECT
   ROUND(SUM(P.price), 2) AS 'faturamento_total' 
 FROM SpotifyClone.users AS U 
 INNER JOIN SpotifyClone.plans AS P 
-	ON U.purchased_plan = P.plan_id;
+ON U.purchased_plan = P.plan_id;
