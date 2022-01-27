@@ -10,6 +10,7 @@ CREATE TABLE `SpotifyClone`.`plans` (
   `price` DECIMAL(3,2) NOT NULL,
   PRIMARY KEY (`plan_id`)) 
   ENGINE = InnoDB;
+
 CREATE TABLE `SpotifyClone`.`users` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(125) NOT NULL,
@@ -23,11 +24,13 @@ CREATE TABLE `SpotifyClone`.`users` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION) 
     ENGINE = InnoDB;
+
 CREATE TABLE `SpotifyClone`.`artists` (
   `artist_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(125) NOT NULL,
   PRIMARY KEY (`artist_id`)) 
   ENGINE = InnoDB;
+
 CREATE TABLE `SpotifyClone`.`artists_followers` (
   `user` INT NOT NULL,
   `artist` INT NOT NULL,
@@ -43,6 +46,7 @@ CREATE TABLE `SpotifyClone`.`artists_followers` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION) 
     ENGINE = InnoDB;
+
 CREATE TABLE `SpotifyClone`.`albums` (
   `album_id` INT NOT NULL AUTO_INCREMENT,
   `album_name` VARCHAR(125) NOT NULL,
@@ -55,6 +59,7 @@ CREATE TABLE `SpotifyClone`.`albums` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION) 
     ENGINE = InnoDB;
+    
 CREATE TABLE `SpotifyClone`.`musics` (
   `music_id` INT NOT NULL AUTO_INCREMENT,
   `music_name` VARCHAR(125) NOT NULL,
